@@ -1,0 +1,37 @@
+@mixin rectangle-window($width:100vw, $height:100vw, $border-radius:0, $border-width:0, $border-style:solid, $border-color:black) {
+  width: $width;
+  height: $height;
+  background-position: center center;
+  background-color: #d2d2d2;
+  background-repeat: no-repeat;
+  @if $border-radius != 0 {
+    border-radius: $border-radius;
+  }
+  @if $border-width != 0 {
+    border: $border-width $border-style $border-color;
+  }
+}
+
+@mixin square-window($size:100vw, $border-radius:0, $border-width:0, $border-style:solid, $border-color:black) {
+  @include rectangle-window($size, $size, $border-radius, $border-width, $border-style, $border-color)
+}
+
+@mixin circle-window($size:100vw, $border-width:0, $border-style:solid, $border-color:black) {
+  @include square-window($size, 50%, $border-width, $border-style, $border-color);
+}
+
+@mixin window-for-more-horizontal-image() {
+  background-size: auto 100%;
+}
+
+@mixin window-for-more-vertical-image() {
+  background-size: 100% auto;
+}
+
+.window-for-more-horizontal-image {
+  @include window-for-more-horizontal-image();
+}
+
+.window-for-more-vertical-image {
+  @include window-for-more-vertical-image();
+}
